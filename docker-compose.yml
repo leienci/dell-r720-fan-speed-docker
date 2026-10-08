@@ -1,0 +1,12 @@
+services:
+  dell-fan-control:
+    image: dell-fan-control:latest
+    container_name: dell-fan-control
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - FAN_SPEED=${FAN_SPEED:-10}
+      - RETRY_COUNT=${RETRY_COUNT:-10}
+      - RETRY_INTERVAL=${RETRY_INTERVAL:-5}
+    network_mode: bridge
